@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { LandingPageComponent } from './landing-page.component';
-
+import { MatCarouselModule } from '@ngbmodule/material-carousel';
+import { NavbarModule } from '../shared/modules';
 
 @NgModule({
   declarations: [LandingPageComponent],
   imports: [
     CommonModule,
-    LandingPageRoutingModule
+    NavbarModule,
+    LandingPageRoutingModule,
+    MatCarouselModule.forRoot(),
   ]
 })
 export class LandingPageModule { }

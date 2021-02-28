@@ -1,1 +1,14 @@
-<p>landing-page works!</p>
+<app-navbar> </app-navbar>
+<mat-carousel timings="250ms ease-in" [autoplay]="true" interval="5000" color="accent" maxWidth="auto" proportion="46"
+  slides="3" [loop]="true" [hideArrows]="true" [hideIndicators]="true" [useKeyboard]="false" [useMouseWheel]="false"
+  orientation="rtl">
+  <mat-carousel-slide #matCarouselSlide *ngFor="let slide of slides; let i = index" [image]="slide"
+    overlayColor="#00000040" [hideOverlay]="false">
+    <div
+      style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff;">
+      <h1 style="font-size: 50px;">Imagine-a-Company</h1>
+      <p style="font-size: 20px;">Do whatever you want when you want to.</p>
+      <button class="btn btn-outline-primary" [routerLink]="['/signup']"> Signup </button>
+    </div>
+  </mat-carousel-slide>
+</mat-carousel>
