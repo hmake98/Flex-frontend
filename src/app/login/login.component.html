@@ -2,7 +2,7 @@
   <div class="login-form">
     <h1> Login </h1>
     <hr>
-    <form #signupForm="ngForm" (ngSubmit)="login(signupForm.value)">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <div class="mb-3">
         <label for="name" class="form-label">Username</label>
         <input type="text" maxlength="10" class="form-control" name="username" id="name" #userName="ngModel" ngModel

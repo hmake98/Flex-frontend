@@ -2,24 +2,29 @@
   <div class="signup-form">
     <h1> Signup </h1>
     <hr>
-    <form>
+    <form #signupForm="ngForm" (ngSubmit)="signup(signupForm)">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" aria-describedby="emailHelp">
+        <input type="text" name="userName" class="form-control" id="username" required ngModel>
       </div>
       <div class="mb-3">
         <label for="useremail" class="form-label">Email</label>
-        <input type="email" class="form-control" id="useremail" aria-describedby="emailHelp">
+        <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control"
+          id="useremail" #email="ngModel" required ngModel>
+        <div *ngIf="email.touched">
+          <small *ngIf="email.errors?.pattern">This is not a valid Email!!!</small>
+          <small *ngIf="email.errors?.required">Email is a required field!</small>
+        </div>
       </div>
       <div class="mb-3">
         <label for="userpassword" class="form-label">Password</label>
-        <input type="password" class="form-control" id="userpassword">
+        <input type="password" name="password" class="form-control" id="userpassword" required ngModel>
       </div>
       <div class="mb-3">
         <label for="userconfirm" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" id="userconfirm">
+        <input type="password" name="confirmpass" class="form-control" id="userconfirm" required ngModel>
       </div>
-      <button type="button" class="btn btn-primary btn-lg w-100" (click)="signup()">Signup</button>
+      <button type="submit" class="btn btn-primary btn-lg w-100">Signup</button>
       <hr>
       <p class="text-small"> Already have an account? <a [routerLink]="['/login']"> Login here </a> </p>
     </form>

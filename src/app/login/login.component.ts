@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(form) {
+    if (!form.invalid) {
+
+    }
   }
 
 }
