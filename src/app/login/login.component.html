@@ -1,23 +1,21 @@
-<div class="signup-form">
-  <nav
-    style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
-    aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
-    </ol>
-  </nav>
-  <form>
-    <h2>Login</h2>
+<div class="container col d-flex justify-content-center mt-5">
+  <div class="login-form">
+    <h1> Login </h1>
     <hr>
-    <div class="form-group">
-      <input type="text" class="form-control" name="username" placeholder="Username" required="required">
-    </div>
-    <div class="form-group">
-      <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-    </div>
-    <div class="form-group">
+    <form #signupForm="ngForm" (ngSubmit)="login(signupForm.value)">
+      <div class="mb-3">
+        <label for="name" class="form-label">Username</label>
+        <input type="text" maxlength="10" class="form-control" name="username" id="name" #userName="ngModel" ngModel
+          required>
+      </div>
+      <div class="mb-3">
+        <label for="userpassword" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="userpassword" #userPassword="ngModel" ngModel
+          required>
+      </div>
       <button type="submit" class="btn btn-primary btn-lg w-100">Login</button>
-    </div>
-  </form>
-  <div class="hint-text"> Don't have any account? <a class="" [routerLink]="['/signup']"> Signup here </a> </div>
+      <hr>
+      <p class="text-small"> Not have any account? <a [routerLink]="['/signup']"> Singup here </a> </p>
+    </form>
+  </div>
 </div>
