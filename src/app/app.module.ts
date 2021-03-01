@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LayoutModule,
     BrowserAnimationsModule,
     NgbModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   schemas: [

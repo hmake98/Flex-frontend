@@ -14,6 +14,7 @@
           required>
       </div>
       <button type="submit" class="btn btn-primary btn-lg w-100">Login</button>
+      <button type="button" class="btn btn-danger btn-lg w-100" (click)="googleLogin()">Login with Google</button>
       <hr>
       <p class="text-small"> Not have any account? <a [routerLink]="['/signup']"> Singup here </a> </p>
     </form>

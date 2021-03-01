@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "flex-frontend": {
+      "hosting": {
+        "flex-frontend": [
+          "flex-frontend"
+        ]
+      }
+    }
+  }
+}
