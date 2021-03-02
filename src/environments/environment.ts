@@ -6,7 +6,12 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:5000/api',
   firebaseConfig: {
-
+    apiKey: "AIzaSyCmS5432VwfOAQy3V_YaQLqTtMq-sNqyds",
+    authDomain: "flex-frontend.firebaseapp.com",
+    projectId: "flex-frontend",
+    storageBucket: "flex-frontend.appspot.com",
+    messagingSenderId: "281634357031",
+    appId: "1:281634357031:web:837c7e318b230d91ad7302"
   }
 };
 

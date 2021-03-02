@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(form) {
+    this.router.navigate(['/home'])
     if (!form.invalid) {
-
     }
   }
 

@@ -1,28 +1,47 @@
-<div class="container col w-25 justify-content-center mt-5">
+<div class="container col w-25 d-flex justify-content-center mt-5">
   <div class="signup-form">
     <h1> Signup </h1>
     <hr>
     <form #signupForm="ngForm" (ngSubmit)="signup(signupForm)">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
-        <input type="text" name="userName" class="form-control" id="username" required ngModel>
+        <input type="text" name="userName"
+          [ngClass]="{'is-invalid': username.touched && username.invalid || usernameExist}" class="form-control"
+          id="username" #username="ngModel" required ngModel>
+        <div *ngIf="username.invalid && username.touched">
+          <small class="text-danger" *ngIf="username.errors?.required">Username is required!</small>
+          <small class="text-danger" *ngIf="usernameExist"> Username is already exist! </small>
+        </div>
       </div>
       <div class="mb-3">
         <label for="useremail" class="form-label">Email</label>
-        <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control"
-          id="useremail" #email="ngModel" required ngModel>
-        <div *ngIf="email.touched">
-          <small *ngIf="email.errors?.pattern">This is not a valid Email!!!</small>
-          <small *ngIf="email.errors?.required">Email is a required field!</small>
+        <input type="email" name="email" [ngClass]="{'is-invalid': email.dirty && email.invalid}"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" id="useremail" #email="ngModel"
+          required ngModel>
+        <div *ngIf="email.invalid && email.touched">
+          <small class="text-danger" *ngIf="email.errors?.pattern">Please enter valid email!</small>
+          <small class="text-danger" *ngIf="email.errors?.required">Email is required!</small>
         </div>
       </div>
       <div class="mb-3">
         <label for="userpassword" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="userpassword" required ngModel>
+        <input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+          [ngClass]="{'is-invalid': password.touched && password.invalid}" class="form-control" id="userpassword"
+          #password="ngModel" required ngModel>
+        <div *ngIf="password.invalid && password.touched">
+          <small class="text-danger" *ngIf="password.errors?.pattern">Password pattern not valid!</small>
+          <small class="text-danger" *ngIf="password.errors?.required">Password is required!</small>
+        </div>
       </div>
       <div class="mb-3">
         <label for="userconfirm" class="form-label">Confirm Password</label>
-        <input type="password" name="confirmpass" class="form-control" id="userconfirm" required ngModel>
+        <input type="password" name="confirmpass" class="form-control" id="userconfirm" #confirmpass="ngModel" required
+          [ngClass]="{'is-invalid': confirmpass.touched && confirmpass.value !== password.value}" ngModel>
+        <div *ngIf="confirmpass.touched">
+          <small class="text-danger" *ngIf="confirmpass.value && password.value !== confirmpass.value">Password does not
+            match!</small>
+          <small class="text-danger" *ngIf="confirmpass.errors?.required">Confirm password is required!</small>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary btn-lg w-100">Signup</button>
       <hr>

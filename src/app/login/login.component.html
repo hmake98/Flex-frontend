@@ -5,13 +5,19 @@
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <div class="mb-3">
         <label for="name" class="form-label">Username</label>
-        <input type="text" maxlength="10" class="form-control" name="username" id="name" #userName="ngModel" ngModel
+        <input type="text" maxlength="10" class="form-control" name="username" id="name" #username="ngModel" ngModel
           required>
+        <div *ngIf="username.touched">
+          <small *ngIf="username.errors?.required"> Username is required! </small>
+        </div>
       </div>
       <div class="mb-3">
         <label for="userpassword" class="form-label">Password</label>
-        <input type="password" class="form-control" name="password" id="userpassword" #userPassword="ngModel" ngModel
+        <input type="password" class="form-control" name="password" id="userpassword" #password="ngModel" ngModel
           required>
+        <div *ngIf="password.touched">
+          <small *ngIf="password.errors?.required"> Password is required! </small>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary btn-lg w-100">Login</button>
       <button type="button" class="btn btn-danger btn-lg w-100" (click)="googleLogin()">Login with Google</button>
