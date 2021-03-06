@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase/app';
+// import firebase from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -16,22 +16,20 @@ export class LoginComponent implements OnInit {
   }
 
   login(form) {
-    this.router.navigate(['/home'])
-    if (!form.invalid) {
-    }
+    this.router.navigate(['/app/home']);
   }
 
   async googleLogin() {
-    const response = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    const {
-      additionalUserInfo: {
-        providerId,
-        profile
-      },
-      user: {
-        email
-      }
-    } = response
+    // const response = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    // const {
+    //   additionalUserInfo: {
+    //     providerId,
+    //     profile
+    //   },
+    //   user: {
+    //     email
+    //   }
+    // } = response
   }
 
 }

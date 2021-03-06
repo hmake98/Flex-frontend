@@ -8,11 +8,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { FilesizePipe } from './shared/pipes/filesize.pipe';
+import { AuthInterceptor } from './core/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard, DirectAccessGuard } from './shared/guards';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FilesizePipe
   ],
   imports: [
     BrowserModule,
@@ -22,10 +27,12 @@ import { environment } from 'src/environments/environment';
     NgbModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
+  providers: [
+    AuthGuard,
+    DirectAccessGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
