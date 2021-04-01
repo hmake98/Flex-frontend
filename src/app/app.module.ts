@@ -25,7 +25,7 @@ import { AuthGuard, DirectAccessGuard } from './shared/guards';
     LayoutModule,
     BrowserAnimationsModule,
     NgbModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    // AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [
     AuthGuard,

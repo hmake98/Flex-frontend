@@ -10,4 +10,8 @@ export class AuthService {
   getAuthToken() {
     return localStorage.getItem('token')
   }
+
+  checkLoggedInStatus() {
+    return localStorage.getItem('isLoggedIn')
+  }
 }
