@@ -29,7 +29,7 @@
           [ngClass]="{'is-invalid': password.touched && password.invalid}" class="form-control" id="userpassword"
           #password="ngModel" required ngModel>
         <div *ngIf="password.invalid && password.touched">
-          <small class="text-danger" *ngIf="password.errors?.pattern">Password pattern not valid!</small>
+          <small class="text-danger" *ngIf="password.errors?.pattern">Password pattern not valid! </small>
           <small class="text-danger" *ngIf="password.errors?.required">Password is required!</small>
         </div>
       </div>
